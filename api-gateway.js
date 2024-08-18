@@ -4,9 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-// Create an instance of Express app
 const app = express();
-
 
 // Middleware setup
 app.use(cors()); // Enable CORS
@@ -14,7 +12,9 @@ app.use(helmet()); // Add security headers
 app.use(morgan("combined")); // Log HTTP requests
 app.disable("x-powered-by"); // Hide Express server information
 
-// Development
+/*
+### Change This! ####
+*/
 const services = [
   {
   route: "/user",
@@ -34,24 +34,6 @@ const services = [
   },
 ];
    
-// Production
-/*
-const services = [
-  {
-    route: "/user",
-    target: "http://sonata-userservice:6000/api/users",
-  },
-  {
-    route: "/music",
-    target: "http://sonata-musicservice:4000/api/music",
-  },
-  {
-    route: "/playlist",
-    target: "http://sonata-playlistservice:5000/api/playlist",
-  },
-];
-*/
-
 // Define rate limit constants
 const rateLimit = 60; // Max requests per minute
 const interval = 60 * 1000; // Time window in milliseconds (1 minute)
