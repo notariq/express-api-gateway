@@ -67,7 +67,7 @@ function rateLimitAndTimeout(req, res, next) {
   }
 
   // Set timeout for each request (example: 10 seconds)
-  req.setTimeout(1500, () => {
+  req.setTimeout(15000, () => {
     // Handle timeout error
     res.status(504).json({
       code: 504,
